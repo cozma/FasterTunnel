@@ -1,0 +1,28 @@
+Methods you will need
+-new Tunnel(rows, columns): tunnel constructor creates a new tunnel
+-tunnel.getTunnel(): gets the 2d array containing TunnelCells
+-tunnel.getColumns(): gets the number of columns in the tunnel
+-tunnel.getRows(): gets the number of rows in the tunnel.
+-tunnelCell.getCellType(): gets the cell type of the cell (i.e. CellType.WALL or CellType.SPACE)
+
+I wrote a quick draft based on the KittenRevealer lab. It probably has some errors but let me know if you have any questions
+		
+		int squareHeight = shapeView.getHeight()/tunnel.getRows;
+		int squareWidth = shapeView.getWidth()/tunnel.getHeight;
+		for (int i = 0; i < tunnel.getRows(); i++)
+        {
+            for (int j = 0; j < tunnel.getColumns(); j++)
+            {
+                RectangleShape rect =
+                    new RectangleShape(
+                        i * squareHeight,
+                        j * sqaureWidth,
+                        (i + 1) * squareHeight,
+                        (j + 1) * squareWidth);
+                // If cell is a wall
+                if (tunnel.getTunnel()[i][j].getCellType()==CellType.WALL)
+                {
+                    rect.setFillColor(Color.black)
+					rect.setFilled(true);
+                }
+				shapeView.add(rect);
